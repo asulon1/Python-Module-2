@@ -6,7 +6,7 @@
 #  By: asulon <asulon@student.42nice.fr>         +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/23 22:21:10 by asulon          #+#    #+#               #
-#  Updated: 2026/02/24 17:50:45 by asulon          ###   ########.fr        #
+#  Updated: 2026/02/26 05:46:12 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -112,7 +112,7 @@ def test_garden_management():
     except ValueError as error:
         print(f"Error checking lettuce: {error}")
     # Recovery
-
+    # TODO: add recovery system
     print("Garden management system test complete!")
 
 
