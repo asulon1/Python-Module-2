@@ -6,9 +6,12 @@
 #  By: asulon <asulon@student.42.fr>             +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/23 19:26:47 by asulon          #+#    #+#               #
-#  Updated: 2026/04/02 16:05:56 by asulon          ###   ########.fr        #
+#  Updated: 2026/04/02 17:58:03 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
+
+from typing import Callable
+
 
 class GardenError(Exception):
     def __init__(self, message: str = "A garden error occurred!") -> None:
@@ -16,8 +19,8 @@ class GardenError(Exception):
 
 
 class PlantError(GardenError):
-    def __init__(self, message: str = "The tomato plant is wilting!") -> None:
-        super().__init__(message)
+    def __init__(self, name: str = "Unknown", message: str = "Plant is wilting!") -> None:
+        super().__init__(name + ' ' + message)
 
 
 class WaterError(GardenError):
@@ -26,11 +29,13 @@ class WaterError(GardenError):
 
 
 def check_plant_health(is_wilting: bool) -> None:
+    """Testing PlantError"""
     if is_wilting:
         raise PlantError()
 
 
 def check_water_tank(current_liters: float, minimum_required: float) -> None:
+    """Testing waterError"""
     if current_liters < minimum_required:
         raise WaterError()
 
@@ -51,7 +56,7 @@ def test_specific_errors() -> None:
 
 def test_catch_all_garden_errors() -> None:
     print("Testing catching all garden errors...")
-    checks = [
+    checks: list[Callable[[], None]] = [
         lambda: check_plant_health(True),
         lambda: check_water_tank(1, 3),
     ]
@@ -60,7 +65,7 @@ def test_catch_all_garden_errors() -> None:
         try:
             check()
         except GardenError as error:
-            print(f"Caught a garden error: {error}")
+            print(f"Caught GardenError: {error}")
 
 
 def main() -> None:
