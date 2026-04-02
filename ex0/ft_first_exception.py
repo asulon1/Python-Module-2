@@ -6,7 +6,7 @@
 #  By: asulon <asulon@student.42.fr>             +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/19 17:51:59 by asulon          #+#    #+#               #
-#  Updated: 2026/04/02 16:10:02 by asulon          ###   ########.fr        #
+#  Updated: 2026/04/02 17:12:45 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -14,7 +14,7 @@ def input_temperature(temp_str: str) -> int:
     try:
         temperature = int(temp_str)
     except ValueError as error:
-        raise ValueError(error)
+        raise ValueError(f"{error}\n")
     return temperature
 
 
