@@ -3,21 +3,28 @@
 #                                                      :::      ::::::::    #
 #  ft_finally_block.py                               :+:      :+:    :+:    #
 #                                                  +:+ +:+         +:+      #
-#  By: asulon <asulon@student.42nice.fr>         +#+  +:+       +#+         #
+#  By: asulon <asulon@student.42.fr>             +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/23 19:48:12 by asulon          #+#    #+#               #
-#  Updated: 2026/02/23 20:11:46 by asulon          ###   ########.fr        #
+#  Updated: 2026/04/02 18:27:29 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def water_plants(plant_list: list):
-    print("Testing normal watering...")
-    print("Opening watering system")
+class GardenError(Exception):
+    def __init__(self, message: str = "A garden error occurred!") -> None:
+        super().__init__(message)
+
+
+class PlantError(GardenError):
+    def __init__(self, name: str = "Unknown", message: str = "Plant is wilting!") -> None:
+        super().__init__(name + ' ' + message)
+
+
+def water_plant(plant_name: str) -> None:
     try:
-        for plant in plant_list:
-            if not isinstance(plant, str) or plant.strip() == "":
-                raise ValueError(f"Cannot water {plant} - invalid plant!")
-            print(f"Watering {plant}")
+        if not plant_name.capitalize():
+            raise ValueError(f"Cannot water {plant} - invalid plant!")
+        print(f"Watering {plant}: [OK]")
     except ValueError as error:
         print(f"Error: {error}")
     finally:
@@ -26,12 +33,12 @@ def water_plants(plant_list: list):
 
 
 def test_watering_system():
-    correct_list = ["tomato", "lettuce", "carrots"]
-    error_list = ["tomato", None, "ototot"]
+    print("Testing valid plants...")
+    print("Opening watering system")
+    print("")
     print("=== Garden Watering System ===\n")
 
-    water_plants(correct_list)
-    water_plants(error_list)
+    water_plant()
     print("All custom error types work correctly!")
 
 
