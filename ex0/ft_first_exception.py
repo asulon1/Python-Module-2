@@ -6,7 +6,7 @@
 #  By: asulon <asulon@student.42.fr>             +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/19 17:51:59 by asulon          #+#    #+#               #
-#  Updated: 2026/04/02 16:09:12 by asulon          ###   ########.fr        #
+#  Updated: 2026/04/02 16:10:02 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -29,7 +29,7 @@ def test_temperature() -> None:
             temperature = int(temperature)
             print(f"Temperature is now {temperature}°C\n")
         except ValueError as error:
-            print(f"{error}")
+            print(f"Caught input_temperature error: {error}")
 
     print("\nAll tests completed - program didn't crash!")
 
