@@ -6,7 +6,7 @@
 #  By: asulon <asulon@student.42.fr>             +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/19 18:37:42 by asulon          #+#    #+#               #
-#  Updated: 2026/04/02 17:25:33 by asulon          ###   ########.fr        #
+#  Updated: 2026/04/02 17:35:31 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,24 +16,24 @@ def garden_operations(operation_number: int) -> None:
             try:
                 int('abc')
             except ValueError as error:
-                print(f"Caught ValueError: {error}\n")
+                raise ValueError(f"Caught ValueError: {error}\n")
         case 1:
             try:
                 100 / 0
             except ZeroDivisionError as error:
-                print(f"Caught ZeroDivisionError: {error}\n")
+                raise ZeroDivisionError(f"Caught ZeroDivisionError: {error}\n")
         case 2:
             try:
                 f = open("missing.txt")
                 f.close()
             except FileNotFoundError as error:
-                print(f"Caught FileNotFoundError: {error}\n")
+                raise FileNotFoundError(f"Caught FileNotFoundError: {error}\n")
         case 3:
             try:
-                plant_data: dict[str, int] = {"rose": 1, "sunflowe": 2}
-                plant_data['missing_plant']
-            except KeyError as error:
-                print(f"Caught KeyError: {error}\n")
+                i = "abc"
+                i += 1
+            except TypeError as error:
+                raise TypeError(f"Caught KeyError: {error}\n")
         case _:
             print("Operation completed successfully\n")
 
@@ -45,8 +45,8 @@ def test_error_types() -> None:
             print(f"Testing operation {x}...")
             garden_operations(x)
 
-        except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
-            print("Caught an error, but program continues!\n")
+        except (ValueError, ZeroDivisionError, FileNotFoundError, TypeError) as error:
+            print(error)
 
     print("All error types tested successfully!")
 
