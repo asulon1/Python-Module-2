@@ -6,7 +6,7 @@
 #  By: asulon <asulon@student.42.fr>             +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/02/23 19:48:12 by asulon          #+#    #+#               #
-#  Updated: 2026/04/03 16:45:53 by asulon          ###   ########.fr        #
+#  Updated: 2026/04/03 16:47:49 by asulon          ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -30,7 +30,7 @@ def water_plant(plant_name: str) -> None:
         raise PlantError(f"{error}")
 
 
-def test_watering_system():
+def test_watering_system() -> None:
     valid_list = ["Tomato", "Lettuce", "Carrots"]
     invalid_list = ["Tomato", "lettuce"]
     print("=== Garden Watering System ===\n")
